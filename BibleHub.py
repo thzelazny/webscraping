@@ -5,15 +5,12 @@ from urllib.request import urlopen, Request
 
 
 
-webpage = 'https://ebible.org/asv/JHN'
+webpage = 'https://biblehub.com/asv/john/'
 chapter=random.randint(1,21)
-
-if chapter<10:
-    webpage+="0"+str(chapter)+".htm"
-else:
-    webpage+=str(chapter)+".htm"
+webpage+=str(chapter)+".htm"
 
 chapter=str(chapter)
+
 headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.3'}
 
 req=Request(webpage, headers=headers)
@@ -22,20 +19,20 @@ webpage=urlopen(req).read()
 
 soup=BeautifulSoup(webpage, 'html.parser')
 
-page_verses=soup.findAll("div",class_="main")
-
+page_verses=soup.findAll("div",class_="chap")
 #print(page_verses)
 #This removes all of html language and leaves us with all of the text
 for verse in page_verses:
     verse_list= verse.text.split(".")
 
-#print(verse_list)
+print(verse_list)
 
-myverse=random.choice(verse_list[:len(verse_list)-5])
+
+myverse=random.choice(verse_list)
 
 #print(f"Chapter: {chapter}, Verse: {myverse}")
 
-message="Chapter: "+" "+chapter+" "+"Verse: "+myverse
+message="Chapter: "+" "+chapter+" "+"Verse: "+" "+myverse
 
 print(message)
 
