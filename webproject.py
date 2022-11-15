@@ -28,8 +28,7 @@ title=soup.title
 for row in table_rows[1:6]:
     td=row.findAll("td")
     ranking=int(td[0].text)
-
-    name=td[1].text.rstrip("\n")
+    name=td[1].text.lstrip()
     price=td[2].text.replace("$","")
     price=price.replace(",","")
     price=float(price)
@@ -55,7 +54,6 @@ for row in table_rows[1:6]:
 
     print()
     print(f"Ranking: {ranking}")
-    print()
     print(f"Name: {name}")
     print(f"Price: ${price}")
     print(f"Percentage change: {percent}")

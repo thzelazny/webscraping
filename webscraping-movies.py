@@ -27,12 +27,12 @@ for row in table_row[1:6]:
         gross=gross.replace("$","")
         distributor=td[9].text
         theater_num=td[6].text.replace(",","")
-        gross_theater=(float(gross)/float(theater_num))
+        gross_theater=round((float(gross)/float(theater_num)),2)
         print(f"Rank: {rank}")
         print(f"Movie Name: {name}")
         print(f"Total Gross: ${gross}")
         print(f"Distributor: {distributor}")
-        print(f"Average Gross/Theater: ${gross_theater}")
+        print(f"Average Gross/Theater: $ {gross_theater}")
         print()
         
 
