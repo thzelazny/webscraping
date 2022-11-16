@@ -28,7 +28,7 @@ title=soup.title
 for row in table_rows[1:6]:
     td=row.findAll("td")
     ranking=int(td[0].text)
-    name=td[1].text.lstrip()
+    name=td[1].text.lstrip().rstrip()
     price=td[2].text.replace("$","")
     price=price.replace(",","")
     price=float(price)
@@ -37,19 +37,18 @@ for row in table_rows[1:6]:
     change=change/100
 
     price_difference=round((1-change)*price,2)
-    if ranking==1:
+    if name== "Bitcoin (BTC)":
         if price<40000:
             message="Bitcoin price has fallen below $40,000!"
             textmessage=client.messages.create(to=myCellPhone,from_=TwilioNumber,
-                            body=message)
-            print(textmessage.status)
+                                body=message)
     
-    if ranking==2:
+    if name=="Ethereum (ETH)":
         if price<3000:
             message="Ethereum price has fallen below $3,000!"
             textmessage=client.messages.create(to=myCellPhone,from_=TwilioNumber,
                             body=message)
-            print(textmessage.status)
+
     
 
     print()
