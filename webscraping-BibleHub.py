@@ -25,7 +25,6 @@ page_verses=soup.findAll("div",class_="chap")
 for verse in page_verses:
     verse_list= verse.text.split(".")
 
-print(verse_list)
 
 
 myverse=random.choice(verse_list)

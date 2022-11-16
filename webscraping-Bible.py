@@ -35,7 +35,7 @@ myverse=random.choice(verse_list[:len(verse_list)-5])
 
 #print(f"Chapter: {chapter}, Verse: {myverse}")
 
-message="Chapter: "+" "+chapter+" "+"Verse: "+myverse
+message="Chapter: "+" "+chapter+" "+"Verse: "+myverse+"\n"
 
 print(message)
 
